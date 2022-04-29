@@ -11,7 +11,7 @@ means of collaboration.
 * Historical market data chart display 
 
 * Ability to connect to a server-side code on startup 
-to retrieve historical data + client watchlist(based on device id)
+to retrieve historical data + client watchlist (based on device id)
 
 * Stock data streamed from sockets (_live updates_)
 
