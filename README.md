@@ -1,6 +1,10 @@
 # Stock Alerter 🔔
-
-## Functional Requirements - 
+### Updates 
+- In the process of transfering prototype code onto remote repo, 
+while improving on code readability and allowing for better 
+means of collaboration. 
+- Working on server-side code to be able to connect up to UI. 
+### Functional Requirements - 
 
 * Display S&P500 stock market prices
 
@@ -13,8 +17,7 @@ to retrieve historical data + client watchlist(based on device id)
 
 * Server-side code must allow for email and or phone notifications 
 of price threshold reached, alert expiry, drastic volume flunctuations of watchlist price movements
-
-## Quality Attributes - 
+### Quality Attributes - 
 
 * Reliability
 * Usability 
