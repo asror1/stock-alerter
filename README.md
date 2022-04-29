@@ -1,4 +1,4 @@
-# Stock Alerter 
+# Stock Alerter 🔔
 
 ## Functional Requirements - 
 
@@ -23,3 +23,4 @@ of price threshold reached, alert expiry, drastic volume flunctuations of watchl
 * Performance
 
 ## Prototype - 
+![prototype](https://user-images.githubusercontent.com/92228287/165878259-c631dac3-9d8b-4490-97b9-5ac6d3eb489c.png)
