@@ -1,6 +1,6 @@
-#Stock Alerter 
+# Stock Alerter 
 
-##Functional Requirements - 
+## Functional Requirements - 
 
 * Display S&P500 stock market prices
 
@@ -14,7 +14,7 @@ to retrieve historical data + client watchlist(based on device id)
 * Server-side code must allow for email and or phone notifications 
 of price threshold reached, alert expiry, drastic volume flunctuations of watchlist price movements
 
-##Quality Attributes - 
+## Quality Attributes - 
 
 * Reliability
 * Usability 
@@ -22,4 +22,4 @@ of price threshold reached, alert expiry, drastic volume flunctuations of watchl
 * Security
 * Performance
 
-##Prototype - 
+## Prototype - 
