@@ -2,12 +2,15 @@ package tools;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
 
 public class FXTools {
 	public static void setShadow(Node node, double radius, String color) {
-		
+		DropShadow ds = new DropShadow(radius, Color.web(color));
+		node.setEffect(ds);
 	}
 	public static void setBackgroundColor(Node node, String color) {
 		if(node!=null) {
@@ -15,7 +18,8 @@ public class FXTools {
 		}
 	}
 	public static void setImageSize(ImageView image, RectangularDimention d) {
-		
+		image.setFitHeight(d.getPrefHeight());
+		image.setFitWidth(d.getPrefWidth());
 	}
 	public static Region createFillerRegion(RectangularDimention d) {
 		return null;

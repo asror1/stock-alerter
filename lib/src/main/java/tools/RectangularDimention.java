@@ -1,19 +1,19 @@
 package tools;
 
 public class RectangularDimention {
-	private double maxHeight;
-	private double maxWidth;
-	private double minWidth;
-	private double minHeight;
+	private Double maxHeight;
+	private Double maxWidth;
+	private Double minWidth;
+	private Double minHeight;
 	private double prefHeight;
 	private double prefWidth;
 	public RectangularDimention(double prefWidth, double prefHeight) {
-		this(prefWidth,prefHeight,Integer.MAX_VALUE, Integer.MAX_VALUE);
+		this(prefWidth,prefHeight,null, null);
 	}
-	public RectangularDimention(double prefWidth, double prefHeight, double maxWidth, double maxHeight) {
-		this(prefWidth,prefHeight,maxWidth,maxHeight,0.0,0.0);
+	public RectangularDimention(double prefWidth, double prefHeight, Double  maxWidth, Double maxHeight) {
+		this(prefWidth,prefHeight,maxWidth,maxHeight,null,null);
 	}
-	public RectangularDimention(double prefWidth, double prefHeight, double maxWidth, double maxHeight, double minWidth, double minHeight) {
+	public RectangularDimention(double prefWidth, double prefHeight, double maxWidth, double maxHeight, Double minWidth, Double minHeight) {
 		this.setPrefWidth(prefWidth);
 		this.setPrefHeight(prefHeight);
 		this.setMaxWidth(maxWidth);
@@ -34,24 +34,28 @@ public class RectangularDimention {
 		this.prefHeight = prefHeight;
 	}
 	public double getMinHeight() {
+		if(minHeight==null)return prefHeight;
 		return minHeight;
 	}
 	public void setMinHeight(double minHeight) {
 		this.minHeight = minHeight;
 	}
 	public double getMinWidth() {
+		if(minWidth==null)return prefWidth;
 		return minWidth;
 	}
 	public void setMinWidth(double minWidth) {
 		this.minWidth = minWidth;
 	}
 	public double getMaxWidth() {
+		if(maxWidth==null)return prefWidth;
 		return maxWidth;
 	}
 	public void setMaxWidth(double maxWidth) {
 		this.maxWidth = maxWidth;
 	}
 	public double getMaxHeight() {
+		if(maxHeight==null)return prefHeight;
 		return maxHeight;
 	}
 	public void setMaxHeight(double maxHeight) {
