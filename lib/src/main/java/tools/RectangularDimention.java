@@ -8,12 +8,12 @@ public class RectangularDimention {
 	private double prefHeight;
 	private double prefWidth;
 	public RectangularDimention(double prefWidth, double prefHeight) {
-		this(prefWidth,prefHeight,null, null);
+		this(prefWidth,prefHeight,20000.0, 20000.0);
 	}
 	public RectangularDimention(double prefWidth, double prefHeight, Double  maxWidth, Double maxHeight) {
-		this(prefWidth,prefHeight,maxWidth,maxHeight,null,null);
+		this(prefWidth,prefHeight,maxWidth,maxHeight,0.0,0.0);
 	}
-	public RectangularDimention(double prefWidth, double prefHeight, double maxWidth, double maxHeight, Double minWidth, Double minHeight) {
+	public RectangularDimention(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight, Double minWidth, Double minHeight) {
 		this.setPrefWidth(prefWidth);
 		this.setPrefHeight(prefHeight);
 		this.setMaxWidth(maxWidth);
