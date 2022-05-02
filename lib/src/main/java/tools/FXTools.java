@@ -19,9 +19,18 @@ public class FXTools {
 			node.setStyle("-fx-background-color: "+color+";");
 		}
 	}
+	public static void setBackgroundColor(Node node, RGBA rgba) {
+		if(node ==null) return; 
+		node.setStyle("-fx-background-color: rgb("+rgba.getRed()+","+rgba.getGreen()+","+rgba.getBlue()+","+rgba.getAlpha()+");");
+	}
 	public static void setImageSize(ImageView image, RectangularDimention d) {
 		image.setFitHeight(d.getPrefHeight());
 		image.setFitWidth(d.getPrefWidth());
+	}
+	public static void setRegionSize(Region region, RectangularDimention d) {
+		region.setPrefSize(d.getPrefWidth(), d.getPrefHeight());
+		region.setMinSize(d.getMinWidth(), d.getMinHeight());
+		region.setMaxSize(d.getMaxWidth(), d.getMaxHeight());
 	}
 	public static Region createFillerRegion(RectangularDimention d) {
 		Region rgn = new Region();

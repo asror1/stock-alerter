@@ -1,6 +1,7 @@
+import components.watchlist.DefaultWatchlistStrategy;
+import components.watchlist.WatchlistComponent;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -11,11 +12,10 @@ public class StockAlerter extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		StackPane stackPane = new StackPane();
-		    Scene scene = new Scene(stackPane);
-		    primaryStage.initStyle(StageStyle.TRANSPARENT);
-		    primaryStage.setScene(scene);
-		    primaryStage.show();
+		WatchlistComponent watchlist = new WatchlistComponent(new DefaultWatchlistStrategy());
+		Scene scene = new Scene(watchlist);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 		
 	}
 }
