@@ -78,9 +78,48 @@ public class RGBA {
 			this.green = 192.0;
 			this.alpha = 1;
 		}
-		else throw new InvalidRGBAValueException("This color is not implemented in this class "+color);
+		else if(color.startsWith("#")) {
+			int red = 0, green = 0, blue = 0;
+			color = color.substring(1).toUpperCase();
+			switch(color.length()) {
+			case 2: 
+				red = hexToDecimal(color);
+				this.setRed(red);
+				this.setGreen(0.0);
+				this.setBlue(0.0);
+				break;
+			case 4: 
+				red = hexToDecimal(color.substring(0, 2));
+				green = hexToDecimal(color.substring(2,4));
+				this.setRed(red);
+				this.setGreen(green);
+				this.setBlue(0.0);
+				break;
+			case 6: 
+				red = hexToDecimal(color.substring(0, 2));
+				green = hexToDecimal(color.substring(2,4));
+				blue = hexToDecimal(color.substring(4,6));
+				this.setRed(red);
+				this.setGreen(green);
+				this.setBlue(blue);
+				break;
+			default: throw new InvalidRGBAValueException("The hex color is invalid: #"+color);
+			}
+		}
+		else throw new InvalidRGBAValueException("This color is not implemented: "+color);
 		return this;
 		
+	}
+	static int hexToDecimal(String hexNumber) {
+		String hex = "0123456789ABCDEF";
+		hexNumber = hexNumber.toUpperCase();
+		int value = 0;
+		for(int i=0;i<hexNumber.length();++i) {
+			char c = hexNumber.charAt(i);
+			int d = hex.indexOf(c);
+			value = value*16+d;
+		}
+		return value;
 	}
 	public RGBA() {
 		this(255.0,255.0,255.0,1);

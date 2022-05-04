@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
+import tools.dimention.RectangularDimention;
 
 public class FXTools {
 	public static void setShadow(Node node, double radius, String color) {
@@ -79,5 +80,10 @@ public class FXTools {
 		btn.setGraphic(rgn);
 		return btn;
 	}
-	
+	public static void bindHeight(Region n1, Region n2) {
+		n1.prefHeightProperty().bind(n2.heightProperty());
+	}
+	public static void bindWidth(Region n1, Region n2) {
+		n1.prefWidthProperty().bind(n2.widthProperty());
+	}
 }
