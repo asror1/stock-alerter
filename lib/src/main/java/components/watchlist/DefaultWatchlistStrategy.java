@@ -7,8 +7,7 @@ import javafx.scene.layout.VBox;
 import tools.FXTools;
 import tools.InvalidRGBAValueException;
 import tools.RGBA;
-import tools.dimention.DynamicRectangularDimention;
-import tools.dimention.RectangularDimention;
+import tools.dimension.DynamicRectangularDimension;
 
 public class DefaultWatchlistStrategy implements WatchlistStrategy {
 	
@@ -19,7 +18,7 @@ public class DefaultWatchlistStrategy implements WatchlistStrategy {
 		GridPane grid = new GridPane();
 		try {
 			FXTools.setBackgroundColor(grid, new RGBA().setColor("#659df0").setAlpha(1));
-			FXTools.setRegionSize(grid, new DynamicRectangularDimention(500, 500));
+			FXTools.setRegionSize(grid, new DynamicRectangularDimension(500, 500));
 			System.out.println(grid.getPrefWidth());
 		} catch (InvalidRGBAValueException e) {
 			e.printStackTrace();
@@ -35,7 +34,7 @@ public class DefaultWatchlistStrategy implements WatchlistStrategy {
 		} catch (InvalidRGBAValueException e) {
 			e.printStackTrace();
 		}
-		FXTools.setRegionSize(buttonContainer, new DynamicRectangularDimention(500, 500));
+		FXTools.setRegionSize(buttonContainer, new DynamicRectangularDimension(500, 500));
 		return buttonContainer;
 	}
 

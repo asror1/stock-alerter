@@ -1,19 +1,19 @@
-package tools.dimention;
+package tools.dimension;
 
-public class RectangularDimention {
+public class RectangularDimension {
 	private Double maxHeight;
 	private Double maxWidth;
 	private Double minWidth;
 	private Double minHeight;
 	private double prefHeight;
 	private double prefWidth;
-	public RectangularDimention(double prefWidth, double prefHeight) {
+	public RectangularDimension(double prefWidth, double prefHeight) {
 		this(prefWidth,prefHeight,Double.valueOf(Integer.MAX_VALUE), Double.valueOf(Integer.MAX_VALUE));
 	}
-	public RectangularDimention(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight) {
+	public RectangularDimension(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight) {
 		this(prefWidth,prefHeight,maxWidth,maxHeight,0.0,0.0);
 	}
-	public RectangularDimention(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight, Double minWidth, Double minHeight) {
+	public RectangularDimension(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight, Double minWidth, Double minHeight) {
 		this.setPrefWidth(prefWidth);
 		this.setPrefHeight(prefHeight);
 		this.setMaxWidth(maxWidth);
