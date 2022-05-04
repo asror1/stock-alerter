@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
+import tools.dimension.RectangularDimension;
 
 public class FXTools {
 	public static void setShadow(Node node, double radius, String color) {
@@ -23,23 +24,23 @@ public class FXTools {
 		if(node ==null) return; 
 		node.setStyle("-fx-background-color: rgb("+rgba.getRed()+","+rgba.getGreen()+","+rgba.getBlue()+","+rgba.getAlpha()+");");
 	}
-	public static void setImageSize(ImageView image, RectangularDimention d) {
+	public static void setImageSize(ImageView image, RectangularDimension d) {
 		image.setFitHeight(d.getPrefHeight());
 		image.setFitWidth(d.getPrefWidth());
 	}
-	public static void setRegionSize(Region region, RectangularDimention d) {
+	public static void setRegionSize(Region region, RectangularDimension d) {
 		region.setPrefSize(d.getPrefWidth(), d.getPrefHeight());
 		region.setMinSize(d.getMinWidth(), d.getMinHeight());
 		region.setMaxSize(d.getMaxWidth(), d.getMaxHeight());
 	}
-	public static Region createFillerRegion(RectangularDimention d) {
+	public static Region createFillerRegion(RectangularDimension d) {
 		Region rgn = new Region();
 		rgn.setPrefSize(d.getPrefWidth(), d.getPrefHeight());
 		rgn.setMinSize(d.getMinWidth(), d.getMinHeight());
 		rgn.setMaxSize(d.getMaxWidth(), d.getMaxHeight());
 		return rgn;
 	}
-	public static Button createSimpleButton(RectangularDimention d, String text, String styleClass) {
+	public static Button createSimpleButton(RectangularDimension d, String text, String styleClass) {
 		Button btn = new Button();
 		btn.setAlignment(Pos.CENTER);
 		btn.setPrefSize(d.getPrefWidth(), d.getPrefHeight());
@@ -49,7 +50,7 @@ public class FXTools {
 		btn.getStyleClass().add(styleClass);
 		return btn;
 	}
-	public static Button createSimpleButton(RectangularDimention d, String text) {
+	public static Button createSimpleButton(RectangularDimension d, String text) {
 		Button btn = new Button();
 		btn.setAlignment(Pos.CENTER);
 		btn.setPrefSize(d.getPrefWidth(), d.getPrefHeight());
@@ -58,9 +59,9 @@ public class FXTools {
 		btn.setText(text);
 		return btn;
 	}
-	public static Button createGraphicButton(RectangularDimention d, String svgPath, double graphicRatio, String styleClass) {
+	public static Button createGraphicButton(RectangularDimension d, String svgPath, double graphicRatio, String styleClass) {
 		Button btn = new Button();
-		Region rgn = createFillerRegion(new RectangularDimention((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio),null,null,null,null));
+		Region rgn = createFillerRegion(new RectangularDimension((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio),null,null,null,null));
 		SVGPath svg = new SVGPath();
 		svg.setContent(svgPath);
 		rgn.setShape(svg);
@@ -69,9 +70,9 @@ public class FXTools {
 		btn.getStyleClass().add(styleClass);
 		return btn;
 	}
-	public static Button createGraphicButton(RectangularDimention d, String svgPath, double graphicRatio) {
+	public static Button createGraphicButton(RectangularDimension d, String svgPath, double graphicRatio) {
 		Button btn = new Button();
-		Region rgn = createFillerRegion(new RectangularDimention((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio),null,null,null,null));
+		Region rgn = createFillerRegion(new RectangularDimension((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio),null,null,null,null));
 		SVGPath svg = new SVGPath();
 		svg.setContent(svgPath);
 		rgn.setShape(svg);
@@ -79,5 +80,10 @@ public class FXTools {
 		btn.setGraphic(rgn);
 		return btn;
 	}
-	
+	public static void bindHeight(Region n1, Region n2) {
+		n1.prefHeightProperty().bind(n2.heightProperty());
+	}
+	public static void bindWidth(Region n1, Region n2) {
+		n1.prefWidthProperty().bind(n2.widthProperty());
+	}
 }

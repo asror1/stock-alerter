@@ -2,6 +2,6 @@ package components.watchlist;
 
 import javafx.scene.layout.Pane;
 
-public interface WatchlistStrategy {
+interface WatchlistStrategy {
 	Pane loadWatchlist();
 }

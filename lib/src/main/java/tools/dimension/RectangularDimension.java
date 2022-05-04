@@ -1,19 +1,19 @@
-package tools;
+package tools.dimension;
 
-public class RectangularDimention {
+public class RectangularDimension {
 	private Double maxHeight;
 	private Double maxWidth;
 	private Double minWidth;
 	private Double minHeight;
 	private double prefHeight;
 	private double prefWidth;
-	public RectangularDimention(double prefWidth, double prefHeight) {
-		this(prefWidth,prefHeight,20000.0, 20000.0);
+	public RectangularDimension(double prefWidth, double prefHeight) {
+		this(prefWidth,prefHeight,Double.valueOf(Integer.MAX_VALUE), Double.valueOf(Integer.MAX_VALUE));
 	}
-	public RectangularDimention(double prefWidth, double prefHeight, Double  maxWidth, Double maxHeight) {
-		this(prefWidth,prefHeight,maxWidth == null ? 20000.0 : maxWidth,maxHeight == null ? 20000.0 : maxHeight ,0.0,0.0);
+	public RectangularDimension(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight) {
+		this(prefWidth,prefHeight,maxWidth,maxHeight,0.0,0.0);
 	}
-	public RectangularDimention(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight, Double minWidth, Double minHeight) {
+	public RectangularDimension(double prefWidth, double prefHeight, Double maxWidth, Double maxHeight, Double minWidth, Double minHeight) {
 		this.setPrefWidth(prefWidth);
 		this.setPrefHeight(prefHeight);
 		this.setMaxWidth(maxWidth);
@@ -37,28 +37,28 @@ public class RectangularDimention {
 		if(minHeight==null)return prefHeight;
 		return minHeight;
 	}
-	public void setMinHeight(double minHeight) {
+	public void setMinHeight(Double minHeight) {
 		this.minHeight = minHeight;
 	}
 	public double getMinWidth() {
 		if(minWidth==null)return prefWidth;
 		return minWidth;
 	}
-	public void setMinWidth(double minWidth) {
+	public void setMinWidth(Double minWidth) {
 		this.minWidth = minWidth;
 	}
 	public double getMaxWidth() {
 		if(maxWidth==null)return prefWidth;
 		return maxWidth;
 	}
-	public void setMaxWidth(double maxWidth) {
+	public void setMaxWidth(Double maxWidth) {
 		this.maxWidth = maxWidth;
 	}
 	public double getMaxHeight() {
 		if(maxHeight==null)return prefHeight;
 		return maxHeight;
 	}
-	public void setMaxHeight(double maxHeight) {
+	public void setMaxHeight(Double maxHeight) {
 		this.maxHeight = maxHeight;
 	}
 }

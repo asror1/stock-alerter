@@ -1,6 +1,5 @@
 package components.watchlist;
 
-import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -8,18 +7,19 @@ import javafx.scene.layout.VBox;
 import tools.FXTools;
 import tools.InvalidRGBAValueException;
 import tools.RGBA;
-import tools.RectangularDimention;
+import tools.dimension.DynamicRectangularDimension;
 
 public class DefaultWatchlistStrategy implements WatchlistStrategy {
-
-	public DefaultWatchlistStrategy() {
-	}
+	
+	private HBox watchlist = new HBox();
+	public DefaultWatchlistStrategy() {}
 
 	private GridPane loadItemContainer() {
 		GridPane grid = new GridPane();
 		try {
-			FXTools.setBackgroundColor(grid, new RGBA().setColor("red").setAlpha(0.3));
-			FXTools.setRegionSize(grid, new RectangularDimention(500, 100, null, null));
+			FXTools.setBackgroundColor(grid, new RGBA().setColor("#659df0").setAlpha(1));
+			FXTools.setRegionSize(grid, new DynamicRectangularDimension(500, 500));
+			System.out.println(grid.getPrefWidth());
 		} catch (InvalidRGBAValueException e) {
 			e.printStackTrace();
 		}
@@ -34,19 +34,14 @@ public class DefaultWatchlistStrategy implements WatchlistStrategy {
 		} catch (InvalidRGBAValueException e) {
 			e.printStackTrace();
 		}
-		FXTools.setRegionSize(buttonContainer, new RectangularDimention(500, 500, null, null));
+		FXTools.setRegionSize(buttonContainer, new DynamicRectangularDimension(500, 500));
 		return buttonContainer;
-	}
-
-	private Pane loadWatchlist(Node... nodes) {
-		HBox watchlist = new HBox();
-		watchlist.getChildren().addAll(nodes);
-		return watchlist;
 	}
 
 	@Override
 	public Pane loadWatchlist() {
-		return loadWatchlist(loadItemContainer(), loadButtonContainer());
+		watchlist.getChildren().addAll(loadItemContainer(), loadButtonContainer());
+		return watchlist;
 	}
 
 }
