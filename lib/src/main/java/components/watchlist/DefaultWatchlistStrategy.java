@@ -1,5 +1,7 @@
 package components.watchlist;
 
+import components.stock.StockView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -12,36 +14,58 @@ import tools.dimension.DynamicRectangularDimension;
 public class DefaultWatchlistStrategy implements WatchlistStrategy {
 	
 	private HBox watchlist = new HBox();
-	public DefaultWatchlistStrategy() {}
-
-	private GridPane loadItemContainer() {
-		GridPane grid = new GridPane();
-		try {
-			FXTools.setBackgroundColor(grid, new RGBA().setColor("#659df0").setAlpha(1));
-			FXTools.setRegionSize(grid, new DynamicRectangularDimension(500, 500));
-			System.out.println(grid.getPrefWidth());
-		} catch (InvalidRGBAValueException e) {
-			e.printStackTrace();
+	private VBox buttonContainer = new VBox();
+	private GridPane stockContainer = new GridPane();
+	public DefaultWatchlistStrategy() {
+		if(!loadStockContainer()) {
+			watchlist.getChildren().add(new VBox(new Label("Stock container unable to load")));
 		}
-
-		return grid;
+		if(!loadButtonContainer()) {
+			watchlist.getChildren().add(new VBox(new Label("Button container unable to load")));
+		}
 	}
 
-	private VBox loadButtonContainer() {
-		VBox buttonContainer = new VBox();
+	private boolean loadStockContainer() {
 		try {
-			FXTools.setBackgroundColor(buttonContainer, new RGBA().setColor("blue").setAlpha(0.3));
+			FXTools.setBackgroundColor(stockContainer, new RGBA().setColor("#659df0").setAlpha(0.5));
+			FXTools.setRegionSize(stockContainer, new DynamicRectangularDimension(500, 500));
 		} catch (InvalidRGBAValueException e) {
 			e.printStackTrace();
+			return false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
-		FXTools.setRegionSize(buttonContainer, new DynamicRectangularDimension(500, 500));
-		return buttonContainer;
+		return true;
+	}
+
+	private boolean loadButtonContainer() {
+		try {
+			FXTools.setBackgroundColor(buttonContainer, new RGBA().setColor("#e1328c").setAlpha(0.5));
+			FXTools.setRegionSize(buttonContainer, new DynamicRectangularDimension(500, 500));
+		} catch (InvalidRGBAValueException e) {
+			e.printStackTrace();
+			return false;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public Pane loadWatchlist() {
-		watchlist.getChildren().addAll(loadItemContainer(), loadButtonContainer());
+		watchlist.getChildren().addAll(stockContainer,buttonContainer);
 		return watchlist;
+	}
+
+	@Override
+	public void add(StockView stock) {
+	}
+
+	@Override
+	public void remove(StockView stock) {
+		
 	}
 
 }
