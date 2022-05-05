@@ -9,6 +9,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
 import tools.dimension.RectangularDimension;
+import tools.dimension.StaticRectangularDimension;
 
 public class FXTools {
 	public static void setShadow(Node node, double radius, String color) {
@@ -61,7 +62,7 @@ public class FXTools {
 	}
 	public static Button createGraphicButton(RectangularDimension d, String svgPath, double graphicRatio, String styleClass) {
 		Button btn = new Button();
-		Region rgn = createFillerRegion(new RectangularDimension((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio),null,null,null,null));
+		Region rgn = createFillerRegion(new StaticRectangularDimension((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio)));
 		SVGPath svg = new SVGPath();
 		svg.setContent(svgPath);
 		rgn.setShape(svg);
@@ -72,7 +73,7 @@ public class FXTools {
 	}
 	public static Button createGraphicButton(RectangularDimension d, String svgPath, double graphicRatio) {
 		Button btn = new Button();
-		Region rgn = createFillerRegion(new RectangularDimension((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio),null,null,null,null));
+		Region rgn = createFillerRegion(new StaticRectangularDimension((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio)));
 		SVGPath svg = new SVGPath();
 		svg.setContent(svgPath);
 		rgn.setShape(svg);
