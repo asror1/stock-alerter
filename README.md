@@ -1,4 +1,8 @@
 # Stock Alerter 🔔
+### Feed 
+- Started working on the MVC for stock information, which includes the chart and watchlist item
+- Need to implement junit tests for the Stock classes
+- Considering moving tools package into resources package
 ### Updates 
 - In the process of transfering prototype code onto remote repo, 
 while improving on code readability and allowing for better 
