@@ -1,6 +1,6 @@
 package components.watchlist;
 
-import components.stock.StockView;
+import components.stock.view.ItemView;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -20,7 +20,7 @@ public class DefaultWatchlistStrategy implements WatchlistStrategy {
 		if(!loadStockContainer()) {
 			watchlist.getChildren().add(new VBox(new Label("Stock container unable to load")));
 		}
-		if(!loadButtonContainer()) {
+		if(!loadButton()) {
 			watchlist.getChildren().add(new VBox(new Label("Button container unable to load")));
 		}
 	}
@@ -39,7 +39,7 @@ public class DefaultWatchlistStrategy implements WatchlistStrategy {
 		return true;
 	}
 
-	private boolean loadButtonContainer() {
+	private boolean loadButton() {
 		try {
 			FXTools.setBackgroundColor(buttonContainer, new RGBA().setColor("#e1328c").setAlpha(0.5));
 			FXTools.setRegionSize(buttonContainer, new DynamicRectangularDimension(500, 500));
@@ -60,12 +60,14 @@ public class DefaultWatchlistStrategy implements WatchlistStrategy {
 	}
 
 	@Override
-	public void add(StockView stock) {
+	public void add(ItemView stock) {
+		
 	}
 
 	@Override
-	public void remove(StockView stock) {
+	public void remove(ItemView stock) {
 		
 	}
+
 
 }
