@@ -1,4 +1,4 @@
-package components.stock;
+package components.stock.view;
 
 public class StockChartInitException extends Exception {
 

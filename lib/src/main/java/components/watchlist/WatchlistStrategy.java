@@ -1,10 +1,10 @@
 package components.watchlist;
 
-import components.stock.StockView;
+import components.stock.view.ItemView;
 import javafx.scene.layout.Pane;
 
 interface WatchlistStrategy {
 	Pane loadWatchlist();
-	void add(StockView stock);
-	void remove(StockView stock);
+	void add(ItemView stock);
+	void remove(ItemView stock);
 }
