@@ -13,6 +13,7 @@ public class StockPrice {
 	private int volume; 
 	private double avgPrice;
 	private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("MMM d, ^yy");
+	
 	public StockPrice() {}
 	public StockPrice(long timeStamp, int numTransactions, double close, double open, double high, double low, int volume, double avgPrice) {
 		this.setTimeStamp(timeStamp);

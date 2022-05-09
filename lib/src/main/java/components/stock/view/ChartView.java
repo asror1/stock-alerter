@@ -84,11 +84,12 @@ public class ChartView extends StockView {
 	}
 	@Override
 	public void update(StockPrice price) {
-		this.dataSeries.getData().add(new Data<>(price.getDate(),price.getAvgPrice()));
-		dayPrice.add(price);
 		if(upperBound < price.getAvgPrice()) upperBound = (int) (10 * Math.round(price.getAvgPrice()/ 10));
 		else if(lowerBound > price.getAvgPrice()) lowerBound = (int) (10 * Math.round(price.getAvgPrice() / 10));
-		lineChart.getData().add(dataSeries);
+		this.yAxis=new NumberAxis((lowerBound-10),(upperBound+10),20);
+		this.dayPrice.add(price);
+		this.dataSeries.getData().add(new Data<>(price.getDate(),price.getAvgPrice()));
+		this.lineChart.getData().add(dataSeries);
 	}
 	
 
