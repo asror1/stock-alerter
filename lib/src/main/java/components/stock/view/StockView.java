@@ -1,12 +1,10 @@
 package components.stock.view;
 
 import java.util.LinkedList;
-
-import components.stock.model.PriceObserver;
 import components.stock.model.StockPrice;
 import javafx.scene.layout.Pane;
 
-abstract class StockView implements PriceObserver {
+abstract class StockView {
 	
 	protected String ticker;
 	protected LinkedList<StockPrice> dayPrice;
@@ -16,8 +14,8 @@ abstract class StockView implements PriceObserver {
 		this.dayPrice = dayPrice;
 		this.latestPrice = dayPrice.peekLast();
 	}
-	public abstract Pane loadView();
 	
+	public abstract Pane loadView();
 	public abstract void update(StockPrice price);
 	 
 }
