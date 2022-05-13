@@ -1,4 +1,4 @@
-package tools.dimension;
+package util.dimension;
 
 public class DynamicRectangularDimension extends RectangularDimension {
 	public DynamicRectangularDimension(double prefWidth, double prefHeight, double minWidth, double minHeight) {

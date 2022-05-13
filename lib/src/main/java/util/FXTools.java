@@ -1,15 +1,18 @@
-package tools;
+package util;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.value.ObservableNumberValue;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.SVGPath;
-import tools.dimension.RectangularDimension;
-import tools.dimension.StaticRectangularDimension;
+import util.dimension.RectangularDimension;
+import util.dimension.StaticRectangularDimension;
 
 public class FXTools {
 	public static void setShadow(Node node, double radius, String color) {
@@ -33,6 +36,14 @@ public class FXTools {
 		region.setPrefSize(d.getPrefWidth(), d.getPrefHeight());
 		region.setMinSize(d.getMinWidth(), d.getMinHeight());
 		region.setMaxSize(d.getMaxWidth(), d.getMaxHeight());
+	}
+	public static void setSvgGraphic(Pane pane, RectangularDimension d, String svgPath, double graphicRatio) {
+		Region rgn = createFillerRegion(new StaticRectangularDimension((d.getPrefWidth()*graphicRatio), (d.getPrefHeight()*graphicRatio)));
+		SVGPath svg = new SVGPath();
+		svg.setContent(svgPath);
+		rgn.setShape(svg);
+		setBackgroundColor(rgn, "black");
+		pane.getChildren().add(rgn);
 	}
 	public static Region createFillerRegion(RectangularDimension d) {
 		Region rgn = new Region();
@@ -80,6 +91,9 @@ public class FXTools {
 		setBackgroundColor(rgn, "black");
 		btn.setGraphic(rgn);
 		return btn;
+	}
+	public static void bindDimention(DoubleProperty binder, ObservableNumberValue bindee) {
+		binder.bind(bindee);
 	}
 	public static void bindHeight(Region n1, Region n2) {
 		n1.prefHeightProperty().bind(n2.heightProperty());
