@@ -1,4 +1,4 @@
-package tools;
+package util;
 
 public interface SceneObservable {
 	public void notifyObservers();

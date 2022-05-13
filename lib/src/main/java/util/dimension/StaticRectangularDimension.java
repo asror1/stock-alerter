@@ -1,4 +1,4 @@
-package tools.dimension;
+package util.dimension;
 
 public class StaticRectangularDimension extends RectangularDimension{
 	
