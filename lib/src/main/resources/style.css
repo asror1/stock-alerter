@@ -1,0 +1,7 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@200&family=Space+Grotesk:wght@300&display=swap');*/
+.chart-plot-background {
+    -fx-background: rgba(64,61,71,0.9);
+}
+.scroll-pane {
+   -fx-background: rgba(64,61,71,0.9);
+}
