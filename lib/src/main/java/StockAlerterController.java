@@ -2,50 +2,53 @@ import java.util.LinkedList;
 
 import components.default_buttons.DefaultButtons;
 import components.stock.model.StockPrice;
+import components.stock.view.ChartView;
 import components.stock.view.ItemView;
 import components.watchlist.WatchlistComponent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
+import javafx.scene.paint.Color;
 import util.FXTools;
-import util.InvalidRGBAValueException;
-import util.RGBA;
 
 public class StockAlerterController {
-	private double sceneHeight = 1000, sceneWidth = 1500; 
+	private final static double STARTER_HEIGHT = 1000, STARTER_WIDTH = 1500; 
+	private final static String CSS = "src\\main\\resources\\style.css";
 	protected StackPane root = new StackPane();
-	private final Scene scene = new Scene(root,sceneWidth,sceneHeight);
+	private final Scene scene = new Scene(root,STARTER_WIDTH,STARTER_HEIGHT);
 	
 	public StockAlerterController() {
 		root.setAlignment(Pos.TOP_LEFT);
-		try {
-			FXTools.setBackgroundColor(root, new RGBA().setColor("#212326"));
-		} catch (InvalidRGBAValueException e) {
-			e.printStackTrace();
-		}
-		root.setBorder(new Border(new BorderStroke(Paint.valueOf("black"), BorderStrokeStyle.SOLID, new CornerRadii(5), BorderStroke.THIN)));
+		FXTools.setBackgroundColor(root, Color.web("#212035"));
+		 
+		FXTools.setBorder(root, "black", 2, 1);
 		root.getChildren().add(new VBox(new DefaultButtons(scene),loadDisplay()));
 	}
 	private HBox loadDisplay() {
 		HBox display = new HBox();
-		WatchlistComponent watchlist = new WatchlistComponent(scene);
+		display.setAlignment(Pos.CENTER_LEFT);
+		WatchlistComponent watchlist = new WatchlistComponent(scene.heightProperty());
+		
+		
 		LinkedList<StockPrice> price = new LinkedList<>();
 //		(long timeStamp, int numTransactions, double close, double open, double high, double low, int volume, double avgPrice)
 		price.add(new StockPrice(157794120,1,75.0875,74.06,75.15,73.7975,135647456,74.6099));
-		ItemView  item = new ItemView(price,"AAPL");
-		watchlist.add(item);
+		ChartView chart =new ChartView(scene.widthProperty(), watchlist.widthProperty(), price,"AAPL");
 		
-		display.getChildren().addAll(watchlist);
+		for(int i=0;i<5;++i) {
+			ItemView view = new ItemView(price,"AAPL");
+			view.setOnButtonPressed(event ->{
+				watchlist.remove(view);
+			});
+			watchlist.add(view);
+		}
+		display.getChildren().addAll(watchlist,chart.loadView());
 		return display;
 	}
 	public Scene loadApp() {
+		scene.getStylesheets().add(FXTools.createURL(CSS).toExternalForm());
 		return scene;
 	}
 }
